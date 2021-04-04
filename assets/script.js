@@ -1,4 +1,5 @@
 // Assignment Code
+var length;
 var onlyNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 var onlySpecial = ["~", "!", "@", "#", "$", "%", "&", "*", "(", ")", "-", "_", "+", "="];
@@ -16,20 +17,23 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
 
-  var length = parseInt(prompt("How many characters would you like your password to be?"));
-  if (!length) {
-    alert("This needs a value");
-  }
+  length = parseInt(prompt("How many characters would you like your password to be?"));
+    if (!length) {
+      length = parseInt(prompt("How many characters would you like your password to be?"));
 
-  if(length < 8 || length > 128) {
+    }
+
+
+  else if(length < 8 || length > 128) {
     length = parseInt(prompt("How many characters would you like your password to be?"));
     
-  }
+  } else {
 
   var includeNumbers = confirm("Do you want to include numbers?");
   var includeSpecial = confirm("Do you want to include special characters?");
   var includeUpper = confirm("Do you want to include uppercase letters?");
   var includeLower = confirm("Do you want to include lower case letters?");
+};
 
   if (!includeNumbers && !includeSpecial && !includeUpper && !includeLower) {
     choices = alert ("You must choose a criteria!");
