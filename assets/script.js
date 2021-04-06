@@ -1,114 +1,139 @@
 // Assignment Code
-var length;
-var onlyNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-var onlySpecial = ["~", "!", "@", "#", "$", "%", "&", "*", "(", ")", "-", "_", "+", "="];
-
-var onlyUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-
-var onlyLower =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-
-var choices = [onlyNumber, onlySpecial, onlyUpper, onlyLower];
-
 var generateBtn = document.querySelector("#generate");
+var characterlength;
+var confirmNumber;
+var confirmSpecial;
+var confirmUpper; 
+var confirmLower;
 
+
+
+var onlyNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var onlySpecial = ["~", "!", "@", "#", "$", "%", "&", "*", "(", ")", "-", "_", "+", "="];
+var onlyUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+var onlyLower =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var choices;
 
 
 // Write password to the #password input
 function writePassword() {
+ 
+var password = generatePassword();
+var passwordText = document.querySelector("#password");
 
-  length = parseInt(prompt("How many characters would you like your password to be?"));
-    if (!length) {
-      length = parseInt(prompt("How many characters would you like your password to be?"));
+passwordText.value = password;
+
+
+}
+generateBtn.addEventListener("click", writePassword);
+
+function generatePassword () {
+  
+  characterlength = parseInt(prompt("How many characters would you like your password to be?")); console.log(characterlength);
+    if (!characterlength) {
+      characterlength = parseInt(prompt("How many characters would you like your password to be?"));
 
     }
 
-
-  else if(length < 8 || length > 128) {
-    length = parseInt(prompt("How many characters would you like your password to be?"));
+  else if(characterlength < 8 || characterlength > 128) {
+    alert("Password must be 8 to 128 characters");
+    characterlength = parseInt(prompt("How many characters would you like your password to be?"));
     
   } else {
 
-  var includeNumbers = confirm("Do you want to include numbers?");
-  var includeSpecial = confirm("Do you want to include special characters?");
-  var includeUpper = confirm("Do you want to include uppercase letters?");
-  var includeLower = confirm("Do you want to include lower case letters?");
+  confirmNumber = confirm("Do you want to include numbers?");
+  console.log(confirmNumber);
+  confirmSpecial = confirm("Do you want to include special characters?");
+  console.log(confirmSpecial);
+  confirmUpper = confirm("Do you want to include uppercase letters?");
+  console.log(confirmUpper);
+  confirmLower = confirm("Do you want to include lower case letters?");
+  console.log(confirmLower);
 };
 
-  if (!includeNumbers && !includeSpecial && !includeUpper && !includeLower) {
+  if (!confirmNumber && !confirmSpecial && !confirmUpper && !confirmLower) {
     choices = alert ("You must choose a criteria!");
   }
 
-  else if (includeNumbers && includeSpecial && includeUpper && includeLower) {
-    choices = includeNumbers.concat(includeSpecial, includeUpper, includeLower);
+  else if (confirmNumber && confirmSpecial && confirmUpper && confirmLower) {
+    choices = onlyNumber.concat(onlySpecial, onlyUpper, onlyLower);
   }
 
   // include 3 confirmed characteristics
 
 
-  else if (includeNumbers && includeSpecial && includeUpper) {
-    choices = includeNumbers.concat(includeSpecial, includeUpper);
+  else if (confirmNumber && confirmSpecial && confirmUpper) {
+    choices = onlyNumber.concat(onlySpecial, onlyUpper);
   }
 
-  else if (includeNumbers && includeSpecial && includeLower) {
-    choices = includeNumbers.concat(includeSpecial, includeLower);
+  else if (confirmNumber && confirmSpecial && confirmLower) {
+    choices = onlyNumber.concat(onlySpecial, onlyLower);
   }
 
-  else if (includeSpecial && includeUpper && includeLower) {
-    choices = includeSpecial.concat(includeUpper, includeLower);
+  else if (confirmSpecial && confirmUpper && confirmLower) {
+    choices = onlySpecial.concat(onlyUpper, onlyLower);
   }
 
   // else if for 2 confirmed charasteristics 
 
-  else if (includeNumbers && includeSpecial) {
-    choices = includeNumbers.concat(includeSpecial);
+  else if (confirmNumber && confirmSpecial) {
+    choices = onlyNumber.concat(onlySpecial);
   }
 
-  else if (includeNumbers && includeUpper) {
-    choices = includeNumbers.concat(includeUpper);
+  else if (confirmNumber && confirmUpper) {
+    choices = onlyNumber.concat(onlyUpper);
   }
 
-  else if (includeNumbers && includeLower) {
-    choices = includeNumbers.concat(includeLower);
+  else if (confirmNumber && confirmLower) {
+    choices = onlyNumber.concat(onlyLower);
   }
 
-  else if (includeSpecial && includeUpper) {
-    choices = includeSpecial.concat(includeUpper);
+  else if (confirmSpecial && confirmUpper) {
+    choices = onlySpecial.concat(onlyUpper);
   }
 
-  else if (includeSpecial && includeLower) {
-    choices = includeSpecial.concat(includeLower);
+  else if (confirmSpecial && confirmLower) {
+    choices = onlySpecial.concat(onlyLower);
   }
 
-  else if (includeUpper && includeLower) {
-    choices = includeUpper.concat(includeLower);
+  else if (confirmUpper && confirmLower) {
+    choices = onlyUpper.concat(onlyLower);
   }
 
   // else for 1 confirmed characteristic
 
-  else if (includeNumbers) {
-    choices = includeNumbers;
+  else if (confirmNumber) {
+    choices = onlyNumber;
   }
 
-  else if (includeSpecial) {
-    choices = includeSpecial;
+  else if (confirmSpecial) {
+    choices = onlySpecial;
   }
 
-  else if (includeUpper) {
-    choices = includeUpper;
+  else if (confirmUpper) {
+    choices = onlyUpper;
   }
 
-  else if (includeLower) {
-    choices = includeLower;
+  else if (confirmLower) {
+    choices = onlyLower;
+  };
+
+
+  for (var i = 0; i < characterlength; i++) {
+    password = choices[Math.floor(Math.random() * choices.length)];
+    console.log(password);
+    
+    
+    
   }
 
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+ 
 }
 
+
+
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+
