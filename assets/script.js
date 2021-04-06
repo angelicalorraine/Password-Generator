@@ -16,7 +16,8 @@ var choices;
 
 
 // Write password to the #password input
-function writePassword() {
+function writePassword(event) {
+  event.preventDefault();
  
 var password = generatePassword();
 var passwordText = document.querySelector("#password");
@@ -26,12 +27,8 @@ passwordText.value = password;
 
 
 
-
-
-
 function generatePassword () {
-
-
+password = "";
   
   characterlength = parseInt(prompt("How many characters would you like your password to be?")); console.log(characterlength);
     if (!characterlength) {
