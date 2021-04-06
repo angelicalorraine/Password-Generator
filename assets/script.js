@@ -10,9 +10,9 @@ var confirmLower;
 
 var onlyNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var onlySpecial = ["~", "!", "@", "#", "$", "%", "&", "*", "(", ")", "-", "_", "+", "="];
-var onlyUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-var onlyLower =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-var choices;
+var onlyUpper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+var onlyLower =["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var choices = [0];
 
 
 // Write password to the #password input
@@ -28,6 +28,8 @@ passwordText.value = password;
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword () {
+
+
   
   characterlength = parseInt(prompt("How many characters would you like your password to be?")); console.log(characterlength);
     if (!characterlength) {
@@ -118,15 +120,14 @@ function generatePassword () {
     choices = onlyLower;
   };
 
-
+arrayPassword = choices.length;
   for (var i = 0; i < characterlength; i++) {
-    password = choices[Math.floor(Math.random() * choices.length)];
-    console.log(password);
-    
-    
+    var password = choices[Math.floor(Math.random() * choices.length)];
+    console.log(`Password length, ${password}`);
+  
     
   }
-
+  return password;
 
  
 }
