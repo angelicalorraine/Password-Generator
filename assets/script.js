@@ -10,9 +10,9 @@ var confirmLower;
 
 var onlyNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var onlySpecial = ["~", "!", "@", "#", "$", "%", "&", "*", "(", ")", "-", "_", "+", "="];
-var onlyUpper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+var onlyUpper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var onlyLower =["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var choices = [0];
+var choices;
 
 
 // Write password to the #password input
@@ -21,11 +21,13 @@ function writePassword() {
 var password = generatePassword();
 var passwordText = document.querySelector("#password");
 
+
 passwordText.value = password;
 
 
-}
-generateBtn.addEventListener("click", writePassword);
+
+
+
 
 function generatePassword () {
 
@@ -70,6 +72,9 @@ function generatePassword () {
 
   else if (confirmNumber && confirmSpecial && confirmLower) {
     choices = onlyNumber.concat(onlySpecial, onlyLower);
+  }
+  else if (confirmNumber && confirmUpper && confirmLower) {
+    choices = onlyNumber.concat(onlyUpper, onlyLower);
   }
 
   else if (confirmSpecial && confirmUpper && confirmLower) {
@@ -120,9 +125,11 @@ function generatePassword () {
     choices = onlyLower;
   };
 
-arrayPassword = choices.length;
+  
+
   for (var i = 0; i < characterlength; i++) {
-    var password = choices[Math.floor(Math.random() * choices.length)];
+    password += choices[Math.floor(Math.random() * choices.length)];
+    console.log(password.length);
     console.log(`Password length, ${password}`);
   
     
@@ -132,8 +139,9 @@ arrayPassword = choices.length;
  
 }
 
+}
 
-
+generateBtn.addEventListener("click", writePassword);
 
 // Add event listener to generate button
 
